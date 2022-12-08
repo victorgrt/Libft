@@ -1,48 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 12:07:39 by vgoret            #+#    #+#             */
-/*   Updated: 2022/11/17 18:36:21 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/15 17:03:51 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/18 13:38:22 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_lstsize(t_list *lst)
 {
-	char	*new;
-	int		i;
-	int		j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!new)
-		return (NULL);
-	while (s1[i])
+	while (lst)
 	{
-		new[i] = s1[i];
+		lst = lst->next;
 		i++;
 	}
-	while (s2[j])
-	{
-		new[i + j] = s2[j];
-		j++;
-	}
-	new[i + j] = '\0';
-	return (new);
+	return (i);
 }
 
 /*int	main(void)
 {
-	char	tab[] = "/!\\ Hello ";
-	char	tab2[] = "World /!\\";
-	printf("%s\n", ft_strjoin(tab, tab2));
+	t_list	*tab1 = ft_lstnew("I");
+	t_list	*tab2 = ft_lstnew("have");
+	t_list	*tab3 = ft_lstnew("the high ground");
+	tab1->next = tab2;
+	tab2->next = tab3;
+
+	printf("%d\n", ft_lstsize(tab1));
 	return (0);
 }*/

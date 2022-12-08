@@ -6,27 +6,27 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:09:52 by vgoret            #+#    #+#             */
-/*   Updated: 2022/11/15 14:14:17 by vgoret           ###   ########.fr       */
+/*   Updated: 2022/11/17 18:47:25 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	len(int n)
+static int	lennb(long n)
 {
-	long int	nb;
-	int			len;
+	unsigned int	len;
 
-	nb = n;
 	len = 0;
-	if (nb < 0)
+	if (n < 0)
 	{
-		nb *= -1;
+		n *= -1;
 		len++;
 	}
-	while (nb > 0)
+	else if (n == 0)
+		return (1);
+	while (n > 0)
 	{
-		nb /= 10;
+		n /= 10;
 		len++;
 	}
 	return (len);
@@ -34,16 +34,16 @@ static int	len(int n)
 
 char	*ft_itoa(int nb)
 {
-	long int	nbr;
-	char		*str;
-	int			i;
+	unsigned int	len;
+	long int		nbr;
+	char			*str;
 
 	nbr = nb;
-	i = len(nbr);
-	str = (char *)malloc(sizeof(char) * (i + 1));
+	len = lennb(nbr);
+	str = malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	str[i--] = '\0';
+	str[len] = '\0';
 	if (nbr < 0)
 	{
 		nbr *= -1;
@@ -53,9 +53,9 @@ char	*ft_itoa(int nb)
 		str[0] = '0';
 	while (nbr > 0)
 	{
-		str[i] = 48 + (nbr % 10);
+		str[len - 1] = 48 + (nbr % 10);
 		nbr /= 10;
-		i--;
+		len--;
 	}
 	return (str);
 }

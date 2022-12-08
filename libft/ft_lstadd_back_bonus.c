@@ -1,48 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 12:07:39 by vgoret            #+#    #+#             */
-/*   Updated: 2022/11/17 18:36:21 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/16 15:02:54 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/17 17:56:15 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char	*new;
-	int		i;
-	int		j;
+	t_list	*boeuf;
 
-	i = 0;
-	j = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!new)
-		return (NULL);
-	while (s1[i])
+	if (*lst)
 	{
-		new[i] = s1[i];
-		i++;
+		boeuf = ft_lstlast(*lst);
+		boeuf->next = new;
 	}
-	while (s2[j])
-	{
-		new[i + j] = s2[j];
-		j++;
-	}
-	new[i + j] = '\0';
-	return (new);
+	else
+		*lst = new;
 }
 
 /*int	main(void)
 {
-	char	tab[] = "/!\\ Hello ";
-	char	tab2[] = "World /!\\";
-	printf("%s\n", ft_strjoin(tab, tab2));
+	t_list	*tab;
+	t_list	*tab2;
+	t_list	*tab3 = ft_lstnew("ALAN LE KING");
+	t_list	*tab4 = ft_lstnew("NATHAN GROS BG");
+	tab = ft_lstnew("ZAWARUDOOOOO");
+	tab2 = ft_lstnew("JOJOOOOO");
+	
+	tab->next = tab2;
+	tab2->next = tab3;
+	ft_lstadd_back(&tab, tab4);
+	printf("%s\n", (char *)ft_lstlast(tab)->content);
 	return (0);
 }*/

@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:16:51 by vgoret            #+#    #+#             */
-/*   Updated: 2022/11/14 15:20:08 by vgoret           ###   ########.fr       */
+/*   Updated: 2022/11/18 15:36:22 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_isset(char c, const char *set)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (set[i])
@@ -31,29 +31,34 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*str;
 	int		i;
 	int		deb;
-	int		end;
+	int		fin;
 
 	deb = 0;
+	i = 0;
+	if (!s1 || !set)
+		return (NULL);
+	fin = ft_strlen(s1);
 	while (s1[deb] && ft_isset(s1[deb], set))
 		deb++;
-	end = ft_strlen(s1);
-	while (end > deb && ft_isset(s1[end - 1], set))
-		end--;
-	str = (char *)malloc(sizeof(*s1) * (end - deb + 1));
+	while (fin > deb && ft_isset(s1[fin - 1], set))
+		fin--;
+	str = (char *)malloc(sizeof(char) * (fin - deb + 1));
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (deb < end)
+	while (deb < fin)
 	{
 		str[i++] = s1[deb++];
 	}
+	str[i] = '\0';
 	return (str);
 }
 
 /*int	main(void)
 {
-	char tab[] = "!! bonjour !! je m'appelle Roger !!";
+	char tab[] = "!! bonjour !! au revoir !!";
 	char set[] = "!!";
-	printf("%s\n", ft_strtrim(tab, set));
+	char	*a = ft_strtrim(tab, set);
+	printf("%s\n", a);
+	free(a);
 	return (0);
 }*/

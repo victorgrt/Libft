@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 15:16:16 by vgoret            #+#    #+#             */
-/*   Updated: 2022/11/14 16:19:41 by vgoret           ###   ########.fr       */
+/*   Updated: 2022/11/18 13:24:40 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	**ft_split(const char *s, char c)
 		while (*s && !checksep(*s, c))
 			s++;
 	}
-	new[i] = '\0';
+	new[i] = NULL;
 	return (new);
 }
 

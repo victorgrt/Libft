@@ -1,51 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 11:48:31 by vgoret            #+#    #+#             */
-/*   Updated: 2022/11/18 15:37:48 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/16 13:55:37 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/17 16:49:38 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	i;
-	size_t	j;
-	char	*new;
+	t_list	*new;
 
-	i = 0;
-	j = 0;
-	if (s == 0)
-		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	new = (char *)malloc(sizeof(char) * (len + 1));
+	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
-	while (s[i])
-	{
-		if (i >= start && j < len)
-		{
-			new[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	new[j] = '\0';
+	new->content = content;
+	new->next = NULL;
 	return (new);
 }
 
 /*int	main(void)
 {
-	char	tab[] = "HELLO WORLD";
-	unsigned int	start = 0;
-	//size_t	len = ft_strlen(tab);
-	size_t	len = 6;
-	printf("%s", ft_substr(tab, start, len)); 
+	char	tab[] = "BABINKS";
+	printf("%s\n", (char *)(ft_lstnew(tab)->content));
 	return (0);
-}/*
+}*/

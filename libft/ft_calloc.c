@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:34:12 by vgoret            #+#    #+#             */
-/*   Updated: 2022/11/14 14:23:35 by vgoret           ###   ########.fr       */
+/*   Updated: 2022/11/17 18:50:03 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	char	*tab;
 	size_t	i;
 
+	if ((nmemb > sizeof(char) * __INT_MAX__)
+		|| (size > sizeof(char) * INT_MIN))
+		return (NULL);
 	i = 0;
 	tab = malloc(nmemb * size);
 	if (!tab)

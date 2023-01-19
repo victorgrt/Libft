@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:03:43 by vgoret            #+#    #+#             */
-/*   Updated: 2022/11/18 14:13:05 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/01/19 16:32:37 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct i_list
+{
+	int			content;
+	struct i_list	*next;
+}				p_list;
+
+p_list	*ft_lstnew_int(long content);
+int		ft_lstsize_p(p_list *pile);
+void	ft_lstadd_front_p(p_list **pile, p_list *new);
+void	ft_lstadd_back_p(p_list **pile, p_list *new);
+p_list	*ft_lstlast_p(p_list *pile);
 
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
